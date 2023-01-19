@@ -40,6 +40,8 @@ pygame.draw.rect(superficieVentana, ROJO, (textRect.left - 20, textRect.top - 20
 # obtener un arreglo de píxeles de la superficie
 arregloDePíxeles = pygame.PixelArray(superficieVentana)
 arregloDePíxeles[480][380] = NEGRO
+arregloDePíxeles[479][380] = NEGRO
+arregloDePíxeles[478][380] = NEGRO
 del arregloDePíxeles
 superficieVentana.blit(texto, textRect)
 pygame.display.update()
