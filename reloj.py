@@ -10,7 +10,11 @@ pantalla = pygame.display.set_mode(tamPant)
 
 reloj = pygame.time.Clock() # Se define la variable reloj manejador de refresco de pantalla
 
-cRojo = Cuadrado(100,100,40,(255,50,50))
+cRojo = Cuadrado(100,100,40,(255,50,50),"rojo")
+cAzul = Cuadrado(100,150,40,(50,20,255),"azul")
+listaC = []
+listaC.append(cRojo)
+listaC.append(cAzul)
 while True:
     pygame.Surface.fill(pantalla,(0,0,0),None)
     for event in pygame.event.get():
@@ -18,13 +22,20 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-    pygame.draw.rect(pantalla, cRojo.color, (cRojo.posX, cRojo.posY, cRojo.tam,cRojo.tam)) # (Superficie en la cual dibuja, color, (objeto rect{x,y, tamx, tamy} ))
-    xIni = 3
-    yIni = 3
-    #Actualizar posicion de los cuadrados
-    cRojo.posX = cRojo.posX + (xIni*cRojo.velx)
-    cRojo.posY = (cRojo.posY*cRojo.vely)
-    cRojo.comprobarL(400,400)
+    for cuadro in listaC:
+        if cuadro.nombre == 'rojo':
+            xIni = 1
+            yIni = 3
+        else:
+            xIni = 10
+            yIni = 3
+            pass
+        pygame.draw.rect(pantalla, cuadro.color, (cuadro.posX, cuadro.posY, cuadro.tam,cuadro.tam)) # (Superficie en la cual dibuja, color, (objeto rect{x,y, tamx, tamy} ))
+        #Actualizar posicion de los cuadrados
+        cuadro.posX = cuadro.posX + (xIni*cuadro.velx)
+        cuadro.posY = (cuadro.posY*cuadro.vely)
+        cuadro.comprobarL(400,400)
+        pass
     pygame.display.update()
-    reloj.tick(60) # Define la tasa de 60 FPS
+    reloj.tick(30) # Define la tasa de 60 FPS
     pass

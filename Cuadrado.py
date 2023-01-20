@@ -1,5 +1,6 @@
 class Cuadrado:
-    def __init__(self,posX, posY,tam,color):
+    def __init__(self,posX, posY,tam,color,nombre):
+        self.nombre=  nombre
         self.posX = posX
         self.posY = posY
         self.tam = tam
